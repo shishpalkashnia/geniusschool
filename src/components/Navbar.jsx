@@ -21,8 +21,20 @@ export default function Navbar() {
     return () => window.removeEventListener('scroll', onScroll);
   }, []);
 
+  const isActive = scrolled || open;
+
   return (
-    <nav className={`fixed w-full z-50 top-0 transition-all duration-300 ${scrolled ? 'glass-strong py-3' : 'py-5 bg-transparent'}`}>
+    <nav
+      className="fixed w-full z-50 top-0 transition-all duration-300"
+      style={{
+        backgroundColor: isActive ? 'rgba(255,255,255,0.85)' : 'transparent',
+        backdropFilter: isActive ? 'blur(20px)' : 'none',
+        WebkitBackdropFilter: isActive ? 'blur(20px)' : 'none',
+        boxShadow: isActive ? '0 4px 30px rgba(15,23,42,0.06)' : 'none',
+        borderBottom: isActive ? '1px solid rgba(241,245,249,0.5)' : 'none',
+        padding: isActive ? '0.75rem 0' : '1.25rem 0',
+      }}
+    >
       <div className="max-w-7xl mx-auto px-6 flex justify-between items-center">
         {/* Logo */}
         <a href="#" className="flex items-center gap-3">
@@ -51,13 +63,26 @@ export default function Navbar() {
         </div>
       </div>
 
-      {/* Mobile Menu */}
+      {/* Mobile Menu — Premium Floating Glass Card */}
       {open && (
-        <div className="lg:hidden absolute top-full left-0 w-full glass p-6 flex flex-col gap-2 shadow-2xl border-t border-white/50">
-          {NAV_LINKS.map(l => (
-            <a key={l.href} href={l.href} onClick={() => setOpen(false)} className="block w-full text-center py-3 rounded-xl hover:bg-blue-50 text-secondary font-semibold transition-colors">{l.label}</a>
+        <div
+          className="lg:hidden mx-4 mt-3 p-3 rounded-[1.5rem] flex flex-col gap-1 shadow-[0_16px_40px_-12px_rgba(2,132,199,0.15)] border border-white/60"
+          style={{
+            backgroundColor: 'rgba(255, 255, 255, 0.85)',
+            backdropFilter: 'saturate(200%) blur(24px)',
+            WebkitBackdropFilter: 'saturate(200%) blur(24px)',
+          }}
+        >
+          {NAV_LINKS.map((l) => (
+            <a
+              key={l.href}
+              href={l.href}
+              onClick={() => setOpen(false)}
+              className="w-full text-left px-5 py-3.5 rounded-xl text-[0.95rem] font-semibold text-slate-700 active:bg-blue-50/80 active:text-blue-600 transition-all duration-200"
+            >
+              {l.label}
+            </a>
           ))}
-          <a href="#admissions" onClick={() => setOpen(false)} className="block w-full text-center py-3 rounded-xl bg-blue-100 text-blue-600 font-bold mt-2">Apply Now</a>
         </div>
       )}
     </nav>
