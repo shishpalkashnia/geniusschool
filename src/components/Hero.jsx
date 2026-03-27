@@ -31,13 +31,13 @@ export default function Hero() {
             <span className="text-xs font-semibold tracking-wider text-blue-800 uppercase">Admissions Open 2026–27</span>
           </div>
 
-          <h1 className="font-poppins text-5xl sm:text-6xl md:text-7xl lg:text-[5.5rem] font-extrabold leading-[1.1] mb-5 text-slate-900 drop-shadow-sm text-balance">
+          <h1 className="font-poppins text-5xl sm:text-6xl md:text-7xl lg:text-[5.5rem] font-extrabold leading-[1.1] mb-5 text-slate-900 text-balance [text-shadow:_0_2px_12px_rgba(255,255,255,0.6)] lg:[text-shadow:none]">
             <span className="block">Where Every</span>
             <span className="block text-slate-800">Child Discovers</span>
-            <span className="block text-blue-600 mt-1 pb-2">Their Genius.</span>
+            <span className="block text-blue-600 mt-1 pb-2 [text-shadow:_0_2px_16px_rgba(59,130,246,0.25)] lg:[text-shadow:none]">Their Genius.</span>
           </h1>
 
-          <p className="text-lg md:text-xl text-slate-700 mb-8 leading-relaxed font-semibold max-w-xl text-balance drop-shadow-md lg:drop-shadow-none">
+          <p className="text-lg md:text-xl text-slate-700 mb-8 leading-relaxed font-semibold max-w-xl text-balance [text-shadow:_0_1px_8px_rgba(255,255,255,0.7)] lg:[text-shadow:none]">
             Established in 2004, blending modern pedagogy with deep ethical values. Creating safe, smart, and inspiring spaces where 2,500+ students thrive every day in Rania.
           </p>
 
@@ -46,11 +46,29 @@ export default function Hero() {
             <a href="#facilities" className="inline-flex justify-center items-center px-6 py-4 md:px-8 md:py-4 btn-ghost text-base md:text-lg bg-white/90 backdrop-blur-md border-blue-200">Explore Campus</a>
           </div>
 
+          {/* Mobile-only compact badges — right after CTAs */}
+          <div className="flex gap-3 mt-6 lg:hidden">
+            <div className="flex-1 flex items-center gap-3 px-4 py-3 rounded-xl bg-white/70 backdrop-blur-md border border-white/60 shadow-sm">
+              <div className="w-9 h-9 rounded-full bg-blue-100 flex items-center justify-center text-blue-600 text-sm font-bold shrink-0">★</div>
+              <div>
+                <p className="text-[0.6rem] text-secondary uppercase tracking-wider font-semibold leading-none">Legacy</p>
+                <p className="font-poppins font-bold text-sm text-primary">Since 2004</p>
+              </div>
+            </div>
+            <div className="flex-1 flex items-center gap-3 px-4 py-3 rounded-xl bg-white/70 backdrop-blur-md border border-white/60 shadow-sm">
+              <div className="w-9 h-9 rounded-full bg-blue-100 flex items-center justify-center text-blue-600 text-sm font-bold shrink-0">✓</div>
+              <div>
+                <p className="text-[0.6rem] text-secondary uppercase tracking-wider font-semibold leading-none">Affiliation</p>
+                <p className="font-poppins font-bold text-sm text-primary">CBSE</p>
+              </div>
+            </div>
+          </div>
+
           <motion.div 
             initial={{ opacity: 0, y: 20 }} 
             animate={{ opacity: 1, y: 0 }} 
             transition={{ duration: 0.8, delay: 0.4 }}
-            className="mt-12 flex items-center gap-6"
+            className="mt-8 lg:mt-12 flex items-center gap-6"
           >
             <div className="flex -space-x-3">
               <img src="https://i.pravatar.cc/100?img=1" alt="Student" className="w-11 h-11 rounded-full border-2 border-white object-cover shadow-sm bg-blue-50" />
